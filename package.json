@@ -1,11 +1,11 @@
 {
-  "name": "poetez-ts-wc-lib-boilerplatre",
+  "name": "eugenium-wrappers",
   "private": true,
   "version": "0.1.0",
-  "description": "Typescript Web Component library boilerplate for Poetez Project",
+  "description": "Web Component wrappers for native HTML elements to extend native functionality",
   "scripts": {
     "clean": "rimraf dist coverage",
-    "check-es3": "check-es3-syntax dist/umd/ --patch && apply-patch poetez-ts-lib-boilerplatre.js.patch && rimraf poetez-ts-lib-boilerplatre.js.patch",
+    "check-es3": "check-es3-syntax dist/umd/ --patch && apply-patch eugenium-wrappers.js.patch && rimraf eugenium-wrappers.js.patch",
     "lint": "npm-run-all --parallel lint:*",
     "lint:src": "tslint \"src/**/*.+(ts|tsx)\" --type-check -c tslint.json -p tsconfig.tslint.json -t verbose",
     "lint:spec": "tslint \"spec/**/*.+(ts|tsx)\" --type-check -c tslint.json -p tsconfig.tslint.json -t verbose",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/poetez/poetez-ts-lib-boilerplate.git"
+    "url": "git+https://github.com/Lodin/eugenium-wrappers.git"
   },
   "keywords": [
     "boilerplate",
@@ -39,9 +39,9 @@
   "author": "Vlad Rindevich <rindevich.vs@gmail.com> (https://github.com/Lodin)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/poetez/poetez-ts-lib-boilerplate/issues"
+    "url": "https://github.com/Lodin/eugenium-wrappers/issues"
   },
-  "homepage": "https://github.com/poetez/poetez-ts-lib-boilerplate#readme",
+  "homepage": "https://github.com/Lodin/eugenium-wrappers#readme",
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.0",
     "@storybook/addon-options": "^3.2.4",
