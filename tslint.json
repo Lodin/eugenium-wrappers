@@ -2,6 +2,7 @@
   "extends": "tslint-config-poetez",
   "rules": {
     "export-name": false,
-    "function-name": false
+    "function-name": false,
+    "no-unsafe-any": false
   }
 }
