@@ -1,8 +1,27 @@
-import {InputControl} from './hierarchy/input-control';
+import {IInputControl, InputControl} from './basics/input-control';
 
-export type WrapType = 'hard' | 'soft' | 'off';
+export type WrapType =
+  'hard'
+  |'soft'
+  |'off';
 
-export abstract class Textarea extends InputControl<HTMLTextAreaElement> implements HTMLTextAreaElement {
+export interface ITextarea extends IInputControl, HTMLTextAreaElement {
+  setSelectionRange(start?: number, end?: number, direction?: string): void;
+
+  addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLTextAreaElement, ev: HTMLElementEventMap[K]) => any,
+    useCapture?: boolean,
+  ): void;
+
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    useCapture?: boolean,
+  ): void;
+}
+
+export abstract class Textarea extends InputControl<ITextarea> implements ITextarea {
   /**
    * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer. If it is not
    * specified, the default value is 20.
@@ -59,5 +78,19 @@ export abstract class Textarea extends InputControl<HTMLTextAreaElement> impleme
   public set wrap(value: WrapType) {
     this.setAttribute('wrap', value);
     this._nativeElement.wrap = value;
+  }
+
+  public addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: Textarea, ev: HTMLElementEventMap[K]) => any,
+    useCapture?: boolean,
+  ): void;
+
+  public addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    useCapture?: boolean,
+  ): void {
+    this._nativeElement.addEventListener(type, listener, useCapture);
   }
 }

@@ -1,21 +1,22 @@
-import {FormControl, FormControlElement} from './form-control';
+import {FormControl, IFormControl} from './form-control';
 
 export type SelectionDirection = 'forward' | 'backward' | 'none';
 
-export interface InputControlElement extends FormControlElement {
+export interface IInputControl extends IFormControl {
   maxLength: number;
   minLength: number;
   placeholder: string;
   readOnly: boolean;
   required: boolean;
+  selectionDirection: SelectionDirection;
   selectionEnd: number;
   selectionStart: number;
-  type: string;
+  readonly type: string;
   select(): void;
   setSelectionRange(start?: number, end?: number, direction?: string): void;
 }
 
-export abstract class InputControl<T extends InputControlElement> extends FormControl<T> implements InputControlElement {
+export abstract class InputControl<T extends IInputControl> extends FormControl<T> implements IInputControl {
   /**
    * The maximum number of characters (Unicode code points) that the user can enter. If this value isn't specified, the user can enter an
    * unlimited number of characters.

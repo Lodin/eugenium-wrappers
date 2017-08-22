@@ -1,6 +1,6 @@
 import {Base} from './base';
 
-export interface FormControlElement {
+export interface IFormControl extends HTMLElement {
   autofocus: boolean;
   disabled: boolean;
   readonly form: HTMLFormElement;
@@ -13,9 +13,7 @@ export interface FormControlElement {
   setCustomValidity(error: string): void;
 }
 
-export abstract class FormControl<T extends FormControlElement> extends Base implements FormControlElement {
-  protected abstract _nativeElement: T;
-
+export abstract class FormControl<T extends IFormControl> extends Base<T> implements IFormControl {
   /**
    * Lets you specify that a form control should have input focus when the page loads, unless the user overrides it, for example by typing
    * in a different control. Only one form-associated element in a document can have this attribute specified.
