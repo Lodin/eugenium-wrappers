@@ -1,4 +1,4 @@
-import {FormControl} from './basics/form-control';
+import {FormControl, IFormControl} from './basics/form-control';
 import {FormEncType} from './types/form-enctype';
 import {FormTarget} from './types/form-target';
 
@@ -8,7 +8,21 @@ export type ButtonType =
   | 'button'
   | 'menu';
 
-export abstract class Button extends FormControl<HTMLButtonElement> implements HTMLButtonElement {
+export interface IButton<T> extends IFormControl, HTMLButtonElement {
+  addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: T, ev: HTMLElementEventMap[K]) => any,
+    useCapture?: boolean,
+  ): void;
+
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    useCapture?: boolean,
+  ): void;
+}
+
+export abstract class Button extends FormControl<IButton<HTMLButtonElement>> implements IButton<Button> {
   /**
    * The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the
    * button's form owner.
