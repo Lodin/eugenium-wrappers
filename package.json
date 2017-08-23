@@ -1,6 +1,5 @@
 {
   "name": "eugenium-wrappers",
-  "private": true,
   "version": "0.1.0",
   "description": "Web Component wrappers for native HTML elements to extend native functionality",
   "scripts": {
