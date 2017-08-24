@@ -1,6 +1,6 @@
 {
   "name": "eugenium-wrappers",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Web Component wrappers for native HTML elements to extend native functionality",
   "scripts": {
     "clean": "rimraf dist coverage",
