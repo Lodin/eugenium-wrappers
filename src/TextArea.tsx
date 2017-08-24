@@ -22,6 +22,19 @@ export interface ITextArea<T> extends IInputControl, HTMLTextAreaElement {
 }
 
 export abstract class TextArea extends InputControl<ITextArea<HTMLTextAreaElement>> implements ITextArea<TextArea> {
+  protected _nativeElement: ITextArea<HTMLTextAreaElement>;
+  private _observer: MutationObserver;
+
+  public constructor() {
+    super();
+    this._nativeElement = document.createElement('textarea') as ITextArea<HTMLTextAreaElement>;
+    this.shadowRoot!.appendChild(this._nativeElement);
+
+    this._observer = new MutationObserver(([mutation]) => {
+      this._nativeElement.textContent = mutation.target.textContent;
+    });
+  }
+
   /**
    * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer. If it is not
    * specified, the default value is 20.
@@ -78,5 +91,10 @@ export abstract class TextArea extends InputControl<ITextArea<HTMLTextAreaElemen
   public set wrap(value: WrapType) {
     this.setAttribute('wrap', value);
     this._nativeElement.wrap = value;
+  }
+
+  public connectedCallback(): void {
+    this._nativeElement.textContent = this.textContent;
+    this._observer.observe(this, {childList: true});
   }
 }
