@@ -1,2 +1,2 @@
-export {Button} from './button';
-export {TextArea} from './textarea';
+export {Button} from './Button';
+export {TextArea} from './TextArea';

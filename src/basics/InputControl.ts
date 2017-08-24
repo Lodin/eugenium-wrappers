@@ -1,4 +1,4 @@
-import {FormControl, IFormControl} from './form-control';
+import {FormControl, IFormControl} from './FormControl';
 
 export type SelectionDirection = 'forward' | 'backward' | 'none';
 

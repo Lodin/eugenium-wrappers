@@ -1,4 +1,4 @@
-import {IInputControl, InputControl} from './basics/input-control';
+import {IInputControl, InputControl} from './basics/InputControl';
 
 export type WrapType =
   'hard'

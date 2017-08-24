@@ -1,6 +1,6 @@
-import {FormControl, IFormControl} from './basics/form-control';
-import {FormEncType} from './types/form-enctype';
-import {FormTarget} from './types/form-target';
+import {FormControl, IFormControl} from './basics/FormControl';
+import {FormEncType} from './types/FormEnctype';
+import {FormTarget} from './types/FormTarget';
 
 export type ButtonType =
   'submit'

@@ -1,4 +1,4 @@
-import {Base} from './base';
+import {Base} from './Base';
 
 export interface IFormControl extends HTMLElement {
   autofocus: boolean;
