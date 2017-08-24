@@ -3,7 +3,6 @@ export abstract class Base<T extends HTMLElement> extends HTMLElement {
 
   public constructor() {
     super();
-
     this.attachShadow({mode: 'open'});
   }
 
