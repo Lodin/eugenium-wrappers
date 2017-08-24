@@ -23,6 +23,17 @@ export interface IButton<T> extends IFormControl, HTMLButtonElement {
 }
 
 export abstract class Button extends FormControl<IButton<HTMLButtonElement>> implements IButton<Button> {
+  protected _nativeElement: HTMLButtonElement;
+
+  public constructor() {
+    super();
+
+    const slot = document.createElement('slot');
+    this._nativeElement = document.createElement('button');
+    this._nativeElement.appendChild(slot);
+    this.shadowRoot!.appendChild(this._nativeElement);
+  }
+
   /**
    * The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the
    * button's form owner.
